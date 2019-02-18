@@ -146,17 +146,9 @@ module staticArm(h_offSet) {
       translate([-0.8, w-15.4, _h/2]) rotate([0,90,0]) cylinder($fn=100, d=5.8,h=5);
       
       //spring support
-      //translate([-1, -9,_h/2]) rotate([0,90,0]) cube([20,20,20]);
       translate([-1, -6,_h/2]) rotate([0,90,0]) cylinder($fn=100, d=5,h=w);
-      translate([4.4, -6,_h/2]) rotate([90,0,0]) rotate([0,90,0]) cylinder($fn=6, d=9,h=4);
+      translate([4.4, -6,_h/2]) rotate([90,0,0]) rotate([0,90,0]) cylinder($fn=6, d=9.2,h=4);
       translate([8, -6,_h/2]) rotate([0,90,0]) cylinder($fn=100, d=10,h=13);
-      //translate([-0.2, -6,_h/2]) rotate([90,0,0]) rotate([0,90,0]) cylinder($fn=6, d=9,h=4);
-      /*
-      translate([-w/2, -6,_h/2]) rotate([0,90,0]) cylinder($fn=100, d=5,h=w);
-      translate([12, -6,_h/2]) rotate([0,90,0]) cylinder($fn=100, d=10,h=12);
-      translate([8.4, -6,_h/2]) rotate([90,0,0]) rotate([0,90,0]) cylinder($fn=6, d=9,h=4);
-      translate([-0.2, -6,_h/2]) rotate([90,0,0]) rotate([0,90,0]) cylinder($fn=6, d=9,h=4);
-      //*/
       
       //wire support
       translate([-1, -40,_h/2-2]) rotate([0,90,0]) cylinder($fn=100, d=10,h=16);
@@ -175,12 +167,18 @@ module ballBearing(h_offSet) {
 height_offset = 30;
 height_p = 4;
 
+// no printing parts
 //*
 color("lightblue") motor();
 color("lightblue") ballBearing(height_p);
 //*/
 
+// arm
+//*
 color("lightgreen") arm(height_p);
+//*/
+
+// base + static arm
 //*
 staticArm(height_p);
 plate(height_p);
