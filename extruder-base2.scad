@@ -63,17 +63,7 @@ module arm(h_offSet) {
     translate([3.9+1.6+ 28 +3.2, w-3.9-1.6,_h-4]) cylinder($fn=100, d=9.2,h=5);
     
     // motor hole
-    //*
     translate([w/2, w/2, -1]) cylinder($fn=100, d=11.4, h=_h+8);
-//translate([w/2+2.4, w/2+2.5, -1]) cylinder($fn=100, d=4, h=_h+8);
-    //translate([w/2+4.2, w/2-10, -1]) cube([6,9,_h+8]);
-    //translate([w/2-6, w/2, -1]) cube([8,6,_h+8]);
-    //*/
-    /*
-    translate([w/2, w/2-4.2, -1]) cylinder($fn=100, d=20.4, h=_h+6);
-    translate([w/2+4.2, w/2-11, -1]) cube([6,6,_h+8]);
-    translate([w/2-6, w/2, -1]) cube([6,6,_h+8]);
-    //*/
     
     // ball bearing
     translate([w/2, w/2+12, 0]) cylinder($fn=100, d=4, h=_h+8);
@@ -93,8 +83,6 @@ module arm(h_offSet) {
     translate([-w/2, w-15.4, _h/2]) rotate([0,90,0]) cylinder($fn=100, d=2.2,h=2*w);
     translate([w-4, w-15.4, _h/2]) rotate([0,90,0]) cylinder($fn=100, d1=2.2,d2=3.4,h=6);
   }
-  //translate([0,0,h_offSet]) 
-    //translate([w-4, w-15.4, _h/2]) rotate([0,90,0]) cylinder($fn=100, d1=2,,d2=4,h=4);
 }
 
 module motor() {
@@ -147,17 +135,28 @@ module staticArm(h_offSet) {
       translate([w/2, w/2, -h_offSet-1]) cylinder($fn=100, d=12,h=_h+h_offSet+2); 
       
       //flex arm
-      translate([w/2, w/2+12,-1]) cylinder($fn=100, d=13.4,h=_h+2);
+      hull() {
+        translate([w/2, w/2+12,-1]) cylinder($fn=100, d=13.4,h=_h+2);
+        translate([w/2-0.4, w/2+13,-1]) cylinder($fn=100, d=13.4,h=_h+2);
+      }
       
       //filament hole
+      //translate([17, w-15.4, _h/2]) rotate([0,90,0]) cylinder($fn=100, d2=3, d1=2.2,h=2);
       translate([-w/2, w-15.4, _h/2]) rotate([0,90,0]) cylinder($fn=100, d=2.2,h=2*w);
       translate([-0.8, w-15.4, _h/2]) rotate([0,90,0]) cylinder($fn=100, d=5.8,h=5);
       
       //spring support
+      //translate([-1, -9,_h/2]) rotate([0,90,0]) cube([20,20,20]);
+      translate([-1, -6,_h/2]) rotate([0,90,0]) cylinder($fn=100, d=5,h=w);
+      translate([4.4, -6,_h/2]) rotate([90,0,0]) rotate([0,90,0]) cylinder($fn=6, d=9,h=4);
+      translate([8, -6,_h/2]) rotate([0,90,0]) cylinder($fn=100, d=10,h=13);
+      //translate([-0.2, -6,_h/2]) rotate([90,0,0]) rotate([0,90,0]) cylinder($fn=6, d=9,h=4);
+      /*
       translate([-w/2, -6,_h/2]) rotate([0,90,0]) cylinder($fn=100, d=5,h=w);
       translate([12, -6,_h/2]) rotate([0,90,0]) cylinder($fn=100, d=10,h=12);
       translate([8.4, -6,_h/2]) rotate([90,0,0]) rotate([0,90,0]) cylinder($fn=6, d=9,h=4);
       translate([-0.2, -6,_h/2]) rotate([90,0,0]) rotate([0,90,0]) cylinder($fn=6, d=9,h=4);
+      //*/
       
       //wire support
       translate([-1, -40,_h/2-2]) rotate([0,90,0]) cylinder($fn=100, d=10,h=16);
@@ -172,18 +171,16 @@ module ballBearing(h_offSet) {
     }
 }
 
-//color("red") cube([l,w,2]);
-
 
 height_offset = 30;
 height_p = 4;
 
-/*
+//*
 color("lightblue") motor();
 color("lightblue") ballBearing(height_p);
 //*/
 
-//color("lightgreen") arm(height_p);
+color("lightgreen") arm(height_p);
 //*
 staticArm(height_p);
 plate(height_p);
