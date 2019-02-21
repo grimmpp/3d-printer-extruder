@@ -80,7 +80,7 @@ module arm(h_offSet) {
     translate([w-8.5, -6,_h/2]) rotate([30,0,0]) rotate([0,90,0]) cylinder($fn=6, d=6.6,h=3);
     
     //filament hole
-    translate([-w/2, w-15.4, _h/2]) rotate([0,90,0]) cylinder($fn=100, d=2.2,h=2*w);
+    translate([-w/2, w-15.4, _h/2]) rotate([0,90,0]) cylinder($fn=100, d=2.4,h=2*w);
     translate([w-4, w-15.4, _h/2]) rotate([0,90,0]) cylinder($fn=100, d1=2.2,d2=3.4,h=6);
   }
 }
@@ -141,8 +141,8 @@ module staticArm(h_offSet) {
       }
       
       //filament hole
-      //translate([17, w-15.4, _h/2]) rotate([0,90,0]) cylinder($fn=100, d2=3, d1=2.2,h=2);
-      translate([-w/2, w-15.4, _h/2]) rotate([0,90,0]) cylinder($fn=100, d=2.2,h=2*w);
+      //translate([17, w-15.4, _h/2]) rotate([0,90,0]) cylinder($fn=100, d2=3, d1=2.4,h=2);
+      translate([-w/2, w-15.4, _h/2]) rotate([0,90,0]) cylinder($fn=100, d=2.4,h=2*w);
       translate([-0.8, w-15.4, _h/2]) rotate([0,90,0]) cylinder($fn=100, d=5.8,h=5);
       
       //spring support
